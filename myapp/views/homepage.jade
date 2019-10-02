@@ -1,0 +1,82 @@
+extends layout
+
+block content
+    .container
+        .row.mt-4
+            .col-md-4.offset-md-4
+                if msg
+                    span #{msg}
+                   
+                .avatar
+                    if avatar!=''
+                        img(src=avatar alt="上傳頭像" )
+                    else
+                        img(src="../images/empty_avatar.png" alt="上傳頭像" )
+                    h1 #{user} 
+                        p 登入成功
+                        
+                    form(action="/users/avatar", method="post"  enctype="multipart/form-data")
+                        input(type="file", name="avatar")
+                        button(type="submit").btn.btn-success.btn-sm 上傳
+                            //- button(type="" value='upload avatar' data-toggle="modal" data-target="#upload_area").btn.btn-outline-primary Upload Avatar
+
+                hr
+                //- .modal.fade#upload_area(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+                //-     .modal-dialog   
+                //-         .modal-content  
+                //-             .modal-header
+                //-                 h4 上傳頭像
+                //-             .modal-body
+                //-                 p   內容
+                //-             .modal-footer
+                //-                 button(type="") 上傳
+
+
+                //-     p modal test
+
+                h3 你說過的話
+                div  
+                    table.table.table-dark
+                        thead   
+                            tr 
+                                th #
+                                th 內容
+
+                        tbody
+                            for post in posts
+                                tr(id='#{post._id}')
+                                    td #{post.name} 
+                                    td #{post.post}
+                                    td  
+                                        a.del-btn(href='#' id='#{post._id}') 刪除
+
+                script.
+                    $(document).ready(function(){
+                        console.log($('.del-btn').length)
+                    // alert($('#del-btn'));
+                    $('.del-btn').on('click',function(){
+                        //- alert(this.id);
+                        if(confirm('確認刪除?')){
+                            var id=this.id;
+                            //-  $.get('/users/del?id='+this.id,function(){
+                            //-      console.log('ok');
+                            //-  })
+                            $.ajax({
+                                url:'/users/del?id='+this.id,
+                                type:'GET',
+                                error:function(xhr){
+                                    console.log('ajax 錯誤');
+                                },
+                                success:function(res){
+                                    $('tr#'+id).remove();
+                                    console.log('ajax success');
+                                }
+                            })
+                        }
+                   
+                    })
+
+                    $('#img_upload').on('click',function(){
+
+                    })
+                    })

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    height: 100px;
+    background: red;
+}
+
+#footer {
+    height: 100px;
+    background: blue;
+}
+
+#content {
+    /*background: gray;*/
+    overflow: hidden;
+    width: 1110px;
+    margin: 0 auto;
+}
+
+#content .section {
+    width: 200px;
+    height: 360px;
+    font-size: 12px;
+    margin: 10px;
+    border: 1px solid gray;
+    float: left;
+}
+
+#content .section img {
+    width: 200px;
+    height: 300px;
+}

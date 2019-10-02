@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container
+        .row.mt-4
+            .col-md-4.offset-md-4
+                .signup-form
+                    form(action="/login" method='post')
+                        .control-grou
+                            label(for="id") 帳號
+                            .controls
+                            input(type="text",id='id' name="id") 
+                        .control-group
+                            label(for="pwd") 密碼
+                            .controls
+                            input(type="text",id='pwd' name="pwd")
+                        hr
+                        if msg
+                            span  #{msg}
+                            hr
+                        button(type="submit" value='login/sign up') login

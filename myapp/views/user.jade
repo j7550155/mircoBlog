@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+     
+  
+      .content
+      .container
+        .row.mt-4
+            .col-md-4.offset-md-4  
+             h1 #{name}!
+             p 說的話
+                div content 
+                    table.table.table-dark
+                        thead   
+                            tr 
+                                th #
+                                th 誰
+                                th 內容
+                              
+                        tbody
+                          for post in posts
+                            tr  
+                                td #{post.id}
+                                td #{post.name}
+                                td #{post.post}
+                              
+                    

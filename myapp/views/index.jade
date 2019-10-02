@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  if loginState ==true
+    .container
+      .row.mt-4
+        .col-md-4.offset-md-4
+          h1= title
+          p Welcome to #{title}
+          div
+            h3 #{user_id} 
+            p
+              form(action="/say", method="post").well.form-inline.center
+                label(for="say") 說些甚麼:
+                input(type="text" name='say' id='say').form-control
+                button(type='submit').btn.btn-primary SAY
+  else
+    .container
+        .row.mt-4
+          .col-md-4.offset-md-4
+            p.lead 請先登入後再發言
+  .container
+      .row.mt-4
+        .col-md-4.offset-md-4
+          div
+           - var count = postCount;
+           - var pages=Math.ceil(count/5);          
+                div
+                  - for(var i=1 ;i<=pages; i++)
+                      a(href='/p/#{i}').btn.btn-outline-primary=i
+                for post in posts 
+                  .posts 
+                    h5
+                     if post.userdata[0].avatar
+                        img(src='../images/avatar/#{post.userdata[0].avatar}' alt="上傳頭像" )
+                      else
+                          img(src="../images/empty_avatar.png" alt="上傳頭像" )
+                      a(href='/u/#{post.name}') #{post.name} 說:
+                    span #{post.post}
+            //- - for(var j=0;j<=5;j++)
+            //-   -var post =posts
+            //-     div 
+            //-       h5
+            //-         a(href='/u/#{post[j].name}') #{post[j].name} 說:
+            //-       span #{post[j].post}
+
+            //- - for(var i=0;i<5;i++)
+            //-     div 
+            //-     h5
+            //-       a(href='/u/#{post.name}') #{post.name} 說:
+            //-     span #{post.post}
+            
+          
+
+
+  
+
+        

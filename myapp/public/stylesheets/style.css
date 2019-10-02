@@ -1,0 +1,65 @@
+*{
+  margin: 3px;
+  padding: 0px;
+}
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.avatar  {
+  height:150px;
+  width:100%;
+}
+.avatar  p {
+  font-size: 25px;
+ 
+}
+.avatar img {
+  float: left;
+  border-radius: 30%;
+  height:128px;
+  width:128px;
+}
+
+.posts img {
+  height:48px;
+  width:48px;
+  border-radius: 50%;
+}
+.posts span {
+  font-size: 20px;
+}
+
+.search {
+  /* position:relative; */
+  float: right;
+  margin: 0px;
+  padding: 0px;
+}
+
+.list  {
+  position:absolute;
+  /* float: center; */
+  display:none;
+  list-style: none;
+  border: 1px solid black;
+  line-height: 30px;
+  background: whitesmoke;
+}
+.list li {
+  line-height: 30px;
+}
+
+.list li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+.list li a:hover {
+  background: rgba(1,1,1,0.3);
+}
